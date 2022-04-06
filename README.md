@@ -6,7 +6,7 @@
 
 記事を投稿する。
 
-```json=
+```json
 {
     "title": "タイトル",
     "conent": "hello world!"
@@ -17,7 +17,7 @@
 
 特定の記事(post_id)に対してコメントを投稿する。
 
-```json=
+```json
 {
     "name": "hoge",
     "content": "hello comment!"
@@ -31,7 +31,7 @@
 記事リストの取得する。
 クエリのlimitは件数制限(記事数<limitの場合、記事数分のみ返る)
 
-```json=
+```json
 [{
     "post_id": 1234,
     "title": "タイトル",
@@ -49,7 +49,7 @@
 
 特定の記事(post_id)を取得する。
 
-```json=
+```json
 {
     "post_id": 1234,
     "title": "タイトル",
@@ -63,7 +63,7 @@
 特定の記事(post_id)のコメントを取得する。
 クエリのlimitは件数制限
 
-```json=
+```json
 [{
     "comment_id": 5435235,
     "name": "hoge",
