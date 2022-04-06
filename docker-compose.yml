@@ -20,7 +20,7 @@ services:
       - ./initdb.d:/docker-entrypoint-initdb.d
 
   proxy:
-    image: nginx:latest
+    image: nginx
     restart: always
     volumes:
       - type: bind

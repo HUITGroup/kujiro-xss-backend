@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-API_URL="http://localhost:8080"
+API_URL="https://localhost"
 
 # 記事投稿
 curl -X POST -H 'Content-Type: application/json' -d '{"title":"タイトル1", "content":"コンテンツ1"}' "${API_URL}/post"
