@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  app:
+    depends_on: 
+      - db
+      - proxy
+    build:
+      context: .
+    restart: always
+    env_file: 
+      - .env
+
+  db:
+    image: mariadb:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d
+
+  proxy:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - type: bind
+        source: "./nginx.conf"
+        target: "/etc/nginx/nginx.conf"
+      - type: bind
+        source: "./kujiro.huit.adlay.net.crt"
+        target: "/etc/nginx/ssl/kujiro.huit.adlay.net.crt"
+      - type: bind
+        source: "./kujiro.huit.adlay.net.key"
+        target: "/etc/nginx/ssl/kujiro.huit.adlay.net.key"
+    ports:
+      - "443:443"
+    
