@@ -4,10 +4,12 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+
+	"github.com/HUITGroup/kujiro-xss-backend/model"
 )
 
 func handlerGetPostList(c echo.Context) error {
-	var posts []Post
+	var posts []model.Post
 	limit := c.QueryParam("limit")
 	query := `
 		SELECT 
