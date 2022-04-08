@@ -1,80 +1,22 @@
 # kujiro-xss-backend
 
-## POST
+2022/04/08 に行われた「誰ですか こんなところにXSS仕掛けたのは」(kujiro) の Go 製バックエンドです。
 
-### POST /post **ヘッダーにContent-Type: application/json が必須**
+[フロントエンドはこちら](https://github.com/HUITGroup/kujiro-xss-frontend)
 
-記事を投稿する。
+docker compose を使用して構築します。
 
-```json
-{
-    "title": "タイトル",
-    "conent": "hello world!"
-}
- ```
+## 事前準備
 
-### POST /post/:post_id/comment **ヘッダーにContent-Type: application/json が必須**
+1. SSLの証明書(ssl.crt)と秘密鍵(ssl.crt)をディレクトリ内に置く
+1. [nginx.conf](nginx.conf) の server_name を公開したいドメインに修正する
 
-特定の記事(post_id)に対してコメントを投稿する。
+## 構築
 
-```json
-{
-    "name": "hoge",
-    "content": "hello comment!"
-}
+```bash
+docker compose up -d
 ```
 
-## GET
+## API仕様
 
-### GET /post/list?limit=2
-
-記事リストの取得する。
-クエリのlimitは件数制限(記事数<limitの場合、記事数分のみ返る)
-
-```json
-[{
-    "post_id": 1234,
-    "title": "タイトル",
-    "content": "hello world! hi...",
-    "timestamp": "2022-04-06T12:57:42+09:00"
-},{
-    "post_id": 1235,
-    "title": "タイトル",
-    "content": "hello world! hi...",
-    "timestamp": "2022-04-06T12:57:42+09:00"
-}]
-```
-
-### GET /post/:post_id
-
-特定の記事(post_id)を取得する。
-
-```json
-{
-    "post_id": 1234,
-    "title": "タイトル",
-    "content": "hello world! hi...",
-    "timestamp": "2022-04-06T12:57:42+09:00"
-}
-```
-
-### GET /post/:post_id/comments?limit=2
-
-特定の記事(post_id)のコメントを取得する。
-クエリのlimitは件数制限
-
-```json
-[{
-    "comment_id": 5435235,
-    "name": "hoge",
-    "content": "test comment1",
-    "post_id": 1234,
-    "timestamp": "2022-04-06T12:57:42+09:00"
-},{
-    "comment_id": 5435236,
-    "name": "fuga",
-    "content": "test comment2",
-    "post_id": 1234,
-    "timestamp": "2022-04-06T12:57:42+09:00"
-}]
-```
+[api.md](doc/api.md) にあります。
