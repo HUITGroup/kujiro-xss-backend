@@ -9,6 +9,7 @@ import (
 func handlerGetPostList(c echo.Context) error {
 	var posts []Post
 	limit := c.QueryParam("limit")
+
 	query := `
 		SELECT 
 			id, title, content, create_at
@@ -34,7 +35,7 @@ func handlerGetPost(c echo.Context) error {
 			posts
 		WHERE
 			id = ?`
-	if err := db.Select(&post, query, postID); err != nil {
+	if err := db.Get(&post, query, postID); err != nil {
 		return c.String(http.StatusNotFound, "記事がありません")
 	}
 	return c.JSON(http.StatusOK, post)
