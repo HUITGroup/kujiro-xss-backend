@@ -1,10 +1,10 @@
 version: '3.9'
 
 services:
-  app:
+  api:
     depends_on: 
       - db
-      - proxy
+      - nginx
     build:
       context: .
     restart: always
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
 
-  proxy:
+  nginx:
     image: nginx
     restart: always
     volumes:
