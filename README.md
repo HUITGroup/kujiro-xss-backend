@@ -1,6 +1,6 @@
 # kujiro-xss-backend
 
-2022/04/08 に行われた「誰ですか こんなところにXSS仕掛けたのは」(kujiro) の Go 製バックエンドです。
+2022/04/08 に行われた HUIT 新歓の 「誰ですか こんなところにXSS仕掛けたのは」(kujiro) で使用された XSS デモ用の Go 製バックエンド API サーバです。
 
 [フロントエンドはこちら](https://github.com/HUITGroup/kujiro-xss-frontend)
 
