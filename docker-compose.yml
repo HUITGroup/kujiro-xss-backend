@@ -11,15 +11,6 @@ services:
     env_file: 
       - .env
 
-  front:
-    depends_on: 
-      - db
-      - nginx
-    build:
-      context: .
-      dockerfile: Dockerfile.front
-    restart: always
-
   db:
     image: mariadb:latest
     restart: always
